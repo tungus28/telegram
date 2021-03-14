@@ -1,0 +1,27 @@
+<?php
+
+
+final class TelegramService
+{
+    const URL_BOT = "https://api.telegram.org/bot";
+
+    static function sendMessage (string $apiToken, string $chatId, string $message) : bool
+    {
+        $data = [
+            'chat_id' => $chatId,
+            'text' => $message
+        ];
+
+        $responseJson = file_get_contents(self::URL_BOT . $apiToken . "/sendMessage?" . http_build_query($data));
+
+        $responseArray =  json_decode($responseJson, true);
+
+        if ($responseArray['ok'] === true ) {
+            return true;
+        }
+
+        return false;
+        
+    }
+
+}
