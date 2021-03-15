@@ -1,9 +1,8 @@
 <?php
 
-
 final class TelegramService
 {
-    const URL_BOT = "https://api.telegram.org/bot";
+    private const URL_BOT = "https://api.telegram.org/bot";
 
     static function sendMessage (string $apiToken, string $chatId, string $message) : bool
     {
